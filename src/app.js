@@ -15,3 +15,6 @@ const server = app.listen(PORT, () => console.log(`Server Up on Port ${PORT} !!`
 
 app.use('/api/productos', routerProductos);
 app.use('/api/carrito', routerCarrito);
+app.use('/*', (req,res) => {
+  res.send({status: 'ERROR', result: 'Path not defined'})
+});

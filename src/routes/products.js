@@ -1,7 +1,10 @@
 
 import { Router } from 'express';
+import Product from '../models/Product.js';
 
 const router = Router();
+
+let productContainer = new Product('productos.txt');
 
 let products = [];
 
@@ -26,34 +29,39 @@ const validarInputsProduct = (req,res,next) => {
   next();
 }
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   try {
+    let respuesta = await productContainer.getAll();  
+    if(respuesta.status === 'OK'){
+      products = respuesta.result;
+    }
+    
     res.status(200).send({status:'OK', result: products}); 
   } catch (error) {
     res.status(404).send({status:'ERROR', result: error.message}); 
   }  
 });
 
-router.get('/:id', validarProductId, (req, res) => {
+router.get('/:id', async (req, res) => {
 
-  try {
-    let { id } = req.params;    
-    let prod = products[id-1];    
-    res.status(200).send({status:'OK', result: prod}); 
+  try {    
+    let respuesta = await productContainer.getById(req.params.id);    
+
+    let prod = respuesta.result
+    let status = respuesta.status;
+     
+    res.status(200).send({status, result: prod}); 
   } catch (error) {
     res.status(404).send({status:'ERROR', result: error.message}); 
   }  
 });
 
-router.post('/', validarInputsProduct, (req, res) => {
+router.post('/', validarInputsProduct, async (req, res) => {
 
   try {
-    let prod = req.body;       
-    prod.id = products.length + 1;
+    let respuesta = await productContainer.addProduct(req.body);    
 
-    products.push(prod)
-
-    res.status(200).send({status:'OK', result: prod.id}); 
+    res.status(200).send({status: respuesta.status, result: respuesta.result}); 
   } catch (error) {
     res.status(404).send({status:'ERROR', result: error.message}); 
   }
