@@ -1,0 +1,12 @@
+[
+  {
+    "nombre": "QUESO",
+    "descripcion": "muy rico queso rallado",
+    "codigo": "98734heh",
+    "foto": "",
+    "precio": 70,
+    "stock": 8,
+    "timestamp": "2022-09-23T19:44:07.343Z",
+    "id": 1
+  }
+]

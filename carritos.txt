@@ -1,0 +1,90 @@
+[
+  {
+    "productos": [
+      {
+        "nombre": "QUESO",
+        "descripcion": "muy rico queso rallado",
+        "codigo": "98734heh",
+        "foto": "",
+        "precio": 70,
+        "stock": 8
+      }
+    ],
+    "timestamp": "2022-09-23T19:23:39.498Z",
+    "id": 1
+  },
+  {
+    "productos": [
+      {
+        "nombre": "QUESO",
+        "descripcion": "muy rico queso rallado",
+        "codigo": "98734heh",
+        "foto": "",
+        "precio": 70,
+        "stock": 8
+      }
+    ],
+    "timestamp": "2022-09-23T19:24:04.693Z",
+    "id": 2
+  },
+  {
+    "productos": [
+      {
+        "nombre": "QUESO",
+        "descripcion": "muy rico queso rallado",
+        "codigo": "98734heh",
+        "foto": "",
+        "precio": 70,
+        "stock": 8
+      }
+    ],
+    "timestamp": "2022-09-23T19:24:05.838Z",
+    "id": 3
+  },
+  {
+    "productos": [
+      {
+        "nombre": "QUESO",
+        "descripcion": "muy rico queso rallado",
+        "codigo": "98734heh",
+        "foto": "",
+        "precio": 70,
+        "stock": 8
+      },
+      {
+        "nombre": "PAN",
+        "descripcion": "muy rico queso rallado",
+        "codigo": "98734heh",
+        "foto": "",
+        "precio": 55,
+        "stock": 7
+      }
+    ],
+    "timestamp": "2022-09-23T19:24:27.079Z",
+    "id": 4
+  },
+  {
+    "productos": [
+      {
+        "nombre": "QUESO",
+        "timestamp": "2022-09-23T19:44:07.343Z",
+        "descripcion": "muy rico queso rallado",
+        "codigo": "98734heh",
+        "foto": "",
+        "precio": 70,
+        "stock": 8
+      },
+      {
+        "nombre": "PAN",
+        "timestamp": "2022-09-23T19:35:07.343Z",
+        "descripcion": "muy rico queso rallado",
+        "codigo": "98734heh",
+        "foto": "",
+        "precio": 55,
+        "stock": 7
+      }
+    ],
+    "timestamp": "2022-09-23T19:44:35.269Z",
+    "id": 5
+  }
+]

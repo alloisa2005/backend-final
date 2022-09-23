@@ -17,29 +17,25 @@ const validarCarritoId = (req,res,next) => {
   existe ? next() : res.status(200).send({ status:'ERROR', result: `No existe carrito con ID ${id}`});
 }
 
-router.get('/', (req, res) => {
-  res.send({status:'OK', result:'Hola Carrito'});
-});
-
-router.get('/:id', validarCarritoId, (req, res) => {
-
-  try {
-    let { id } = req.params;    
-    let carro = carritos[id-1];    
-    res.status(200).send({status:'OK', result: carro}); 
-  } catch (error) {
-    res.status(404).send({status:'ERROR', result: error.message}); 
-  }  
-});
-
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
   let carrito = req.body;
-  carrito.timestamp = new Date();
-  console.log(carrito);
+  carrito.timestamp = new Date();  
+
+  let respuesta = await cartContainer.addCart(carrito);
+  res.send({status: respuesta.status, result: respuesta.result});
 });
 
-router.put('/:id', (req, res) => {});
-
+//TODO: Vacía un carrito y lo elimina
 router.delete('/:id', (req, res) => {});
+
+//TODO: permite listar todos los productos guardados en el carrito
+router.get('/:id/productos', (req, res) => {});
+
+//TODO: incorporar productos al carrito por su id de carrito
+router.post('/:id/productos', (req, res) => {});
+
+//TODO: Eliminar un producto del carrito por su id de carrito y de producto  
+router.delete('/:id/productos/:id_prod', (req, res) => {});
+
 
 export default router;

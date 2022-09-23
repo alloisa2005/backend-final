@@ -44,7 +44,7 @@ export default class Cart {
     }
   }
 
-  addProduct = async (obj) => {
+  addCart = async (obj) => {
     try {
       if(fs.existsSync(this.archivo)){
         let arch = await fs.promises.readFile(this.archivo, 'utf-8');
@@ -112,4 +112,6 @@ export default class Cart {
       return {status: 'ERROR', result: error.message}
     }
   }
+
+  //TODO: hacer metodo para calcular total del carrito
 }
