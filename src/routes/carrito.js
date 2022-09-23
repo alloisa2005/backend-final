@@ -1,7 +1,10 @@
 
 import { Router } from 'express';
+import Cart from '../models/Cart.js'
 
 const router = Router();
+
+let cartContainer = new Cart('carritos.txt');
 
 let carritos = [];
 
@@ -29,7 +32,11 @@ router.get('/:id', validarCarritoId, (req, res) => {
   }  
 });
 
-router.post('/', (req, res) => {});
+router.post('/', (req, res) => {
+  let carrito = req.body;
+  carrito.timestamp = new Date();
+  console.log(carrito);
+});
 
 router.put('/:id', (req, res) => {});
 
