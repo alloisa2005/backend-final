@@ -49,7 +49,8 @@ export default class Product {
       if(fs.existsSync(this.archivo)){
         let arch = await fs.promises.readFile(this.archivo, 'utf-8');
         let data = JSON.parse(arch);
-        let id = data[data.length - 1].id+1;
+        
+        let id = data.length === 0 ? 1 : data[data.length - 1].id+1;
         obj.id = id;
         data.push(obj);
         await fs.promises.writeFile(this.archivo,JSON.stringify(data,null,2))
@@ -91,15 +92,19 @@ export default class Product {
         let data = JSON.parse(arch);
         let prod = data.find(p => p.id === parseInt(id));                
 
-        prod.nombre = obj.nombre;
-        prod.descripcion = obj.descripcion;
-        prod.codigo = obj.codigo;
-        prod.foto = obj.foto;
-        prod.precio = obj.precio;
-        prod.stock = obj.stock;
-
-        await fs.promises.writeFile(this.archivo,JSON.stringify(data,null,2))
-        return {status: 'OK', result: `Producto ID: ${id} actualizado`}; 
+        if(prod) {
+          prod.nombre = obj.nombre;
+          prod.descripcion = obj.descripcion;
+          prod.codigo = obj.codigo;
+          prod.foto = obj.foto;
+          prod.precio = obj.precio;
+          prod.stock = obj.stock;
+  
+          await fs.promises.writeFile(this.archivo,JSON.stringify(data,null,2))
+          return {status: 'OK', result: `Producto ID: ${id} actualizado`}; 
+        }else {
+          return {status: 'ERROR', result: `Producto ID: ${id} no existe`}; 
+        }
       }else {
         return {status: 'ERROR', result: 'No existe el archivo productos.txt'}; 
       }

@@ -12,7 +12,7 @@ let admin = true;
 const isAdmin = (req,res,next) => {
   admin ? next() : res.status(401).send({ status:'ERROR', result: `Usuario no autorizado para ${req.method}`});
 }
-
+ 
 // Middleware para validar lo que viene en el body como dato de entrada
 const validarInputsProduct = (req,res,next) => {
   let producto = req.body;
