@@ -8,16 +8,19 @@ let cartContainer = new Cart('carritos.txt');
 
 let carritos = [];
 
-// Middleware para validar si existe el ID del carrito
-const validarCarritoId = (req,res,next) => {
-  let { id } = req.params;  
+// Middleware para validar lo que viene en el body como dato de entrada
+const validarInputsProduct = (req,res,next) => {
+  let producto = req.body;
 
-  let existe = carritos.some(p => p.id === parseInt(id)); 
+  if(producto.id === 0 || producto.nombre === '' || producto.precio <= 0 || producto.precio === '' || producto.stock <= 0 || producto.stock === '') return res.status(404).send({
+    status: 'ERROR',
+    result: 'Ingrese los datos del producto correctamente'
+  });
 
-  existe ? next() : res.status(200).send({ status:'ERROR', result: `No existe carrito con ID ${id}`});
+  next();
 }
 
-router.post('/', async (req, res) => {
+router.post('/', validarInputsProduct, async (req, res) => {
   let carrito = req.body;
   carrito.timestamp = new Date();  
 

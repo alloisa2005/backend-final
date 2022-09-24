@@ -29,9 +29,7 @@ router.get('/', async (req, res) => {
   try {
     //res.set('Access-Control-Allow-Origin', '*');
     let respuesta = await productContainer.getAll();  
-    if(respuesta.status === 'OK'){
-      return res.status(200).send({status:'OK', result: respuesta.result});       
-    }
+    return res.status(200).send(respuesta); 
     
   } catch (error) {
     res.status(404).send({status:'ERROR', result: error.message}); 
@@ -43,10 +41,7 @@ router.get('/:id', async (req, res) => {
     //res.set('Access-Control-Allow-Origin', '*');
     let respuesta = await productContainer.getById(req.params.id);    
 
-    let prod = respuesta.result
-    let status = respuesta.status;
-     
-    res.status(200).send({status, result: prod}); 
+    return res.status(200).send(respuesta); 
   } catch (error) {
     res.status(404).send({status:'ERROR', result: error.message}); 
   }  
@@ -59,7 +54,7 @@ router.post('/', isAdmin, validarInputsProduct, async (req, res) => {
     prod.timestamp = new Date();
     let respuesta = await productContainer.addProduct(prod);    
 
-    res.status(200).send({status: respuesta.status, result: respuesta.result}); 
+    return res.status(200).send(respuesta); 
   } catch (error) {
     res.status(404).send({status:'ERROR', result: error.message}); 
   }
@@ -75,9 +70,9 @@ router.put('/:id', isAdmin, validarInputsProduct, async (req, res) => {
 
     let respuesta = await productContainer.updateProduct(id, productoBody);    
 
-    if(respuesta.status === 'ERROR') return res.status(400).send({status:'ERROR', result: respuesta.result});
+    if(respuesta.status === 'ERROR') return res.status(400).send(respuesta);
     
-    res.status(200).send({status: respuesta.status, result: respuesta.result});    
+    return res.status(200).send(respuesta);    
   } catch (error) {
     res.status(404).send({status:'ERROR', result: error.message}); 
   }
@@ -89,7 +84,7 @@ router.delete('/:id', isAdmin, async (req, res) => {
     
     let respuesta = await productContainer.deleteById(id);    
 
-    res.status(200).send({status: respuesta.status, result: respuesta.result});
+    return res.status(200).send(respuesta); 
   } catch (error) {
     res.status(404).send({status:'ERROR', result: error.message}); 
   }
