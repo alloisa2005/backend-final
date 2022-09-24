@@ -1,10 +1,12 @@
 
+
 import { Router } from 'express';
 import Product from '../models/Product.js';
 
+
 const router = Router();
 
-let productContainer = new Product('productos.txt');
+let productContainer = new Product('./data/productos.txt');
 
 let admin = true;
 

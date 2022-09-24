@@ -4,7 +4,7 @@ import Cart from '../models/Cart.js'
 
 const router = Router();
 
-let cartContainer = new Cart('carritos.txt');
+let cartContainer = new Cart('./data/carritos.txt');
 
 let carritos = [];
 
