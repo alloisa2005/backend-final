@@ -25,8 +25,12 @@ router.post('/', async (req, res) => {
   res.send({status: respuesta.status, result: respuesta.result});
 });
 
-//TODO: Vacía un carrito y lo elimina
-router.delete('/:id', (req, res) => {});
+router.delete('/:id', async (req, res) => {
+
+  let { id } = req.params;
+  let respuesta = await cartContainer.deleteById(id);
+  res.send(respuesta);
+});
 
 router.get('/:id/productos', async (req, res) => {
 
@@ -45,8 +49,13 @@ router.post('/:id/productos', async (req, res) => {
   res.send({status: respuesta.status, result: respuesta.result});
 });
 
-//TODO: Eliminar un producto del carrito por su id de carrito y de producto  
-router.delete('/:id/productos/:id_prod', (req, res) => {}); 
+router.delete('/:id/productos/:id_prod', async (req, res) => {
+
+  let {id, id_prod} = req.params;
+  let respuesta = await cartContainer.deleteProdFromCart(id, id_prod);
+
+  res.send(respuesta);
+}); 
 
 
 export default router;
