@@ -6,7 +6,6 @@ const router = Router();
 
 let cartContainer = new Cart('./data/carritos.txt');
 
-let carritos = [];
 
 // Middleware para validar lo que viene en el body como dato de entrada
 const validarInputsProduct = (req,res,next) => {
@@ -25,7 +24,7 @@ router.post('/', validarInputsProduct, async (req, res) => {
   carrito.timestamp = new Date();  
 
   let respuesta = await cartContainer.addCart(carrito);
-  res.send({status: respuesta.status, result: respuesta.result});
+  res.send(respuesta);
 });
 
 router.delete('/:id', async (req, res) => {
@@ -49,7 +48,7 @@ router.post('/:id/productos', async (req, res) => {
   let productos = req.body;  
   let respuesta = await cartContainer.addProductsToCart(id, productos);
 
-  res.send({status: respuesta.status, result: respuesta.result});
+  res.send(respuesta);
 });
 
 router.delete('/:id/productos/:id_prod', async (req, res) => {
