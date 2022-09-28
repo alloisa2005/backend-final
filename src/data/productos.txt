@@ -1,0 +1,22 @@
+[
+  {
+    "nombre": "YERBA",
+    "descripcion": "Mate",
+    "codigo": "asas23",
+    "foto": "",
+    "precio": 180,
+    "stock": 2,
+    "timestamp": "2022-09-28T12:04:17.706Z",
+    "id": 1
+  },
+  {
+    "nombre": "CERVEZA",
+    "descripcion": "Quilmes",
+    "codigo": "asas23",
+    "foto": "",
+    "precio": 300,
+    "stock": 12,
+    "timestamp": "2022-09-28T12:04:38.494Z",
+    "id": 2
+  }
+]
