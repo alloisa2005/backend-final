@@ -5,7 +5,7 @@ import Product from '../models/Product.js';
 
 const router = Router();
 
-let productContainer = new Product('./data/productos.txt');
+let productContainer = new Product('./src/data/productos.txt');
 
 let admin = true;
 
