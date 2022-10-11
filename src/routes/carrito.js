@@ -6,7 +6,6 @@ const router = Router();
 
 let cartContainer = new Cart('./src/data/carritos.txt');
 
-
 // Middleware para validar lo que viene en el body como dato de entrada
 const validarInputsProduct = (req,res,next) => {
   let producto = req.body;
