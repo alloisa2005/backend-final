@@ -1,5 +1,5 @@
 
-const { fs } = require('fs');
+const fs = require('fs');
 
 class Cart {
 
@@ -36,7 +36,7 @@ class Cart {
         let obj = data.find(c => c.id === parseInt(id));
 
         if(!obj) return {status: 'ERROR', result: `Carrito ID: ${id} no existe`}
-
+        
         let productos = obj.productos;        
         return {status: 'OK', result: productos}
 
