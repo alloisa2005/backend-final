@@ -18,5 +18,15 @@
     "stock": 12,
     "timestamp": "2022-09-28T12:04:38.494Z",
     "id": 2
+  },
+  {
+    "nombre": "PlayStation 5",
+    "descripcion": "Consola de Sony",
+    "codigo": "PS57812",
+    "foto": "",
+    "precio": 6500,
+    "stock": 4,
+    "timestamp": "2022-10-19T12:41:50.481Z",
+    "id": 3
   }
 ]
