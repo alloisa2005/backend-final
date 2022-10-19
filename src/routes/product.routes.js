@@ -1,6 +1,6 @@
 
-import { Router } from 'express';
-import Product from '../models/Product.js';
+const { Router } = require('express');
+const Product = require('../models/Product')
 
 
 const router = Router();
@@ -29,7 +29,7 @@ const validarInputsProduct = (req,res,next) => {
 router.get('/', async (req, res) => {
   try {
     //res.set('Access-Control-Allow-Origin', '*');
-    let respuesta = await productContainer.getAll();  
+    let respuesta = await productContainer.getAll();      
     return res.status(200).send(respuesta); 
     
   } catch (error) {
@@ -91,6 +91,6 @@ router.delete('/:id', isAdmin, async (req, res) => {
   }
 })
 
-export default router;
+module.exports = router;
 
 

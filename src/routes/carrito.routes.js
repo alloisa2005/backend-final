@@ -1,6 +1,6 @@
 
-import { Router } from 'express';
-import Cart from '../models/Cart.js'
+const { Router } = require('express');
+const Cart = require('../models/Cart')
 
 const router = Router();
 
@@ -59,4 +59,4 @@ router.delete('/:id/productos/:id_prod', async (req, res) => {
 }); 
 
 
-export default router;
+module.exports = router;

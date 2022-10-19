@@ -1,9 +1,9 @@
 
-import express, { json, urlencoded } from 'express';
-import cors from 'cors';
+const express = require('express');
+const cors = require('cors');
 
-import routerProductos from './routes/products.js';
-import routerCarrito from './routes/carrito.js';
+const routerProductos = require('./routes/product.routes')
+const routerCarrito = require('./routes/carrito.routes')
 
 const app = express();
 
@@ -12,8 +12,8 @@ let PORT = process.env.PORT || 8080;
 app.use(cors());
 
 //app.use(express.static(__dirname + '/public'));
-app.use(json());
-app.use(urlencoded({extended:true}));
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
 
 
 app.use('/api/productos', routerProductos);

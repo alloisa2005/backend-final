@@ -1,7 +1,7 @@
 
-import * as fs from 'fs';
+const { fs } = require('fs');
 
-export default class Cart {
+class Cart {
 
   constructor(archivo){    
     this.archivo = archivo;    
@@ -138,3 +138,5 @@ export default class Cart {
     }
   }  
 }
+
+module.exports = Cart;

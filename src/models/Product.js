@@ -1,13 +1,14 @@
 
-import * as fs from 'fs';
+const fs = require('fs');
 
-export default class Product {
+class Product {
 
   constructor(archivo){    
     this.archivo = archivo;    
   }
   
   getAll = async () => {
+    
     try {
       if(fs.existsSync(this.archivo)){
 
@@ -113,3 +114,5 @@ export default class Product {
     }
   }
 }
+
+module.exports = Product;
