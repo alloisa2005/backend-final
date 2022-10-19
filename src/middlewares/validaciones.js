@@ -13,4 +13,5 @@ const validarInputsProduct = (req,res,next) => {
   next();
 }
 
+
 module.exports = { validarInputsProduct }
