@@ -18,6 +18,16 @@ const validarInputsProduct = (req,res,next) => {
   next();
 }
 
+router.get('/', async (req, res) => {
+  try {
+      // Con MongoDB
+    let result = await CartModel.find()
+    return res.status(200).send({status:'OK', result}); 
+  } catch (error) {
+    return res.status(404).send({status:'ERROR', result: error.message});
+  }  
+})
+
 router.post('/',  async (req, res) => {
   let { producto } = req.body;
   console.log(producto);
@@ -41,17 +51,39 @@ router.post('/',  async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
 
-  let { id } = req.params;
-  let respuesta = await cartContainer.deleteById(id);
-  res.send(respuesta);
+  let { id } = req.params;  
+  try {
+    // Con Archivos
+    //let respuesta = await cartContainer.deleteById(id);
+    //res.send(respuesta);
+
+    // Con MongoDB
+    let result = await CartModel.findByIdAndDelete(id);
+    if(!result) return res.status(404).send({status: 'ERROR', result: `No existe carrito ID: ${id}`});
+
+    return res.status(200).send({status: 'OK', result});  
+  } catch (error) {
+    return res.status(404).send({status:'ERROR', result: error.message});
+  }
 });
 
 router.get('/:id/productos', async (req, res) => {
 
   let { id } = req.params;
-  let respuesta = await cartContainer.getById(id);
 
-  res.send({status: 'OK', result: respuesta.result});
+  try {
+    // Con Archivos
+    //let respuesta = await cartContainer.getById(id);
+    //res.send({status: 'OK', result: respuesta.result});    
+
+    // Con MongoDB
+    let result = await CartModel.findById(id);
+    if(!result) return res.status(404).send({status: 'ERROR', result: `No existe carrito ID: ${id}`});
+
+    return res.status(200).send({status: 'OK', result}); 
+  } catch (error) {
+    return res.status(404).send({status:'ERROR', result: error.message});
+  }
 });
 
 router.post('/:id/productos', async (req, res) => {
@@ -90,10 +122,21 @@ router.post('/:id/productos', async (req, res) => {
   }
 });
 
-router.delete('/:id/productos/:id_prod', async (req, res) => {
+router.delete('/:id_cart/productos/:id_prod', async (req, res) => {
 
-  let {id, id_prod} = req.params;
-  let respuesta = await cartContainer.deleteProdFromCart(id, id_prod);
+  let {id_cart, id_prod} = req.params;
+
+  try {
+    // Con Archivos
+    //let respuesta = await cartContainer.deleteProdFromCart(id, id_prod);    
+
+    // Con MongoDB
+
+
+
+  } catch (error) {
+    return res.status(404).send({status:'ERROR', result: error.message});
+  }
 
   res.send(respuesta);
 }); 
