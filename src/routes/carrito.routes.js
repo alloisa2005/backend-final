@@ -131,9 +131,31 @@ router.delete('/:id_cart/productos/:id_prod', async (req, res) => {
     //let respuesta = await cartContainer.deleteProdFromCart(id, id_prod);    
 
     // Con MongoDB
+    let carrito = await CartModel.findById(id_cart);
 
+    // Si el carrito no existe hago return
+    if(!carrito) return res.status(404).send({status: 'ERROR', result: `No existe carrito ID: ${id_cart}`});
 
+    let productos_carrito = carrito.productos;  // Array con los productos del carrito
 
+    // Me quedo con el producto cuyo ID viene por parametro
+    let prod_buscado = productos_carrito.find(p => p.product_id === id_prod)
+    
+    // Si el producto no existe hago return
+    if(!prod_buscado) return res.status(404).send({status: 'ERROR', result: `No existe producto ID: ${id_prod} en el carrito`});
+
+    // Quito del array el producto del id que viene por parametro y actualizo subtotal del carrito
+    let subTotal = carrito.subTotal - (prod_buscado.quantity * prod_buscado.price)
+    productos_carrito = productos_carrito.filter(p => p.product_id !== id_prod)
+    
+    // Si el carrito queda vacío, lo borro directamente
+    if(productos_carrito.length === 0) {
+      result = await CartModel.findByIdAndDelete(id_cart);
+      return res.status(200).send({status: 'OK', result: 'Carrito borrado'}); 
+    }else {
+      result = await CartModel.findByIdAndUpdate(id_cart, {productos: productos_carrito, subTotal}, {new:true})
+      return res.status(200).send({status: 'OK', result}); 
+    }
   } catch (error) {
     return res.status(404).send({status:'ERROR', result: error.message});
   }
