@@ -3,6 +3,7 @@ const { Router } = require('express');
 const router = Router();
 
 const ProductControllerMONGO = require('../controllers/product.controller.mongo')
+const ProductControllerFIRESTORE = require('../controllers/product.controller.firestore')
 
 // Middlewares
 const { validarInputsProduct } = require('../middlewares/validaciones')
@@ -25,8 +26,13 @@ router.get('/', async (req, res) => {
     //return res.status(200).send(respuesta); 
 
     // Con MongoDB    
-    let result = await ProductControllerMONGO.getAll()
-    return res.status(200).send(result);      
+    //let result = await ProductControllerMONGO.getAll()
+    //return res.status(200).send(result);      
+
+    //Con FIRESTORE
+    let result = await ProductControllerFIRESTORE.getAll();
+    console.log('RES: ', result);
+    return res.status(200).send(result);  
 
   } catch (error) {
     res.status(404).send({status:'ERROR', result: error.message}); 
@@ -41,7 +47,11 @@ router.get('/:id', async (req, res) => {
     //return res.status(200).send(respuesta); 
 
     // Con MongoDB    
-    let result = await ProductControllerMONGO.getById(id);
+    //let result = await ProductControllerMONGO.getById(id);
+    //return res.status(200).send(result);
+
+    //Con FIRESTORE
+    let result = await ProductControllerFIRESTORE.getById(id);
     return res.status(200).send(result);
 
   } catch (error) {
@@ -59,7 +69,11 @@ router.post('/', isAdmin, validarInputsProduct, async (req, res) => {
     //return res.status(200).send(respuesta); 
 
     // Con MongoDB    
-    let result = await ProductControllerMONGO.createProduct(req.body);
+    //let result = await ProductControllerMONGO.createProduct(req.body);
+    //return res.status(200).send(result);
+
+    //Con FIRESTORE
+    let result = await ProductControllerFIRESTORE.createProduct(req.body)
     return res.status(200).send(result);
 
   } catch (error) {
@@ -80,8 +94,12 @@ router.put('/:id', isAdmin, validarInputsProduct, async (req, res) => {
     //return res.status(200).send(respuesta);    
 
     // Con MongoDB    
-    let result = await ProductControllerMONGO.editProduct(id, req.body)
-    return res.status(200).send(result);        
+    //let result = await ProductControllerMONGO.editProduct(id, req.body)
+    //return res.status(200).send(result); 
+    
+    //Con FIRESTORE
+    let result = await ProductControllerFIRESTORE.editProduct(id, req.body)
+    return res.status(200).send(result);   
 
   } catch (error) {
     res.status(404).send({status:'ERROR', result: error.message}); 
@@ -97,8 +115,12 @@ router.delete('/:id', isAdmin, async (req, res) => {
     //return res.status(200).send(respuesta); 
 
     // Con MongoDB
-    let result = await ProductControllerMONGO.deleteProduct(id);
-    return res.status(200).send(result);        
+    //let result = await ProductControllerMONGO.deleteProduct(id);
+    //return res.status(200).send(result);        
+
+    //Con FIRESTORE
+    let result = await ProductControllerFIRESTORE.deleteProduct(id);
+    return res.status(200).send(result); 
 
   } catch (error) {
     res.status(404).send({status:'ERROR', result: error.message}); 
