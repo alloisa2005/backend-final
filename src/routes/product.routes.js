@@ -2,14 +2,14 @@
 const { Router } = require('express');
 const router = Router();
 
-const ProductModel = require('../models/Product.mongo')
+const ProductControllerMONGO = require('../controllers/product.controller.mongo')
 
 // Middlewares
 const { validarInputsProduct } = require('../middlewares/validaciones')
 
 // Con Archivos
-const Product = require('../models/Product')
-let productContainer = new Product('./src/data/productos.txt');
+//const Product = require('../models/Product')
+//let productContainer = new Product('./src/data/productos.txt');
 
 let admin = true;
 
@@ -24,10 +24,10 @@ router.get('/', async (req, res) => {
     //let respuesta = await productContainer.getAll();      
     //return res.status(200).send(respuesta); 
 
-    // Con MongoDB
-    let result = await ProductModel.find()
-    return res.status(200).send({status:'OK', result}); 
-    
+    // Con MongoDB    
+    let result = await ProductControllerMONGO.getAll()
+    return res.status(200).send(result);      
+
   } catch (error) {
     res.status(404).send({status:'ERROR', result: error.message}); 
   }  
@@ -40,11 +40,9 @@ router.get('/:id', async (req, res) => {
     //let respuesta = await productContainer.getById(id);    
     //return res.status(200).send(respuesta); 
 
-    // Con MongoDB
-    let result = await ProductModel.findById(id)    
-    if(!result) return res.status(404).send({status: 'ERROR', result: `No existe producto ID: ${id}`});
-
-    return res.status(200).send({status:'OK', result}); 
+    // Con MongoDB    
+    let result = await ProductControllerMONGO.getById(id);
+    return res.status(200).send(result);
 
   } catch (error) {
     res.status(404).send({status:'ERROR', result: error.message}); 
@@ -60,9 +58,9 @@ router.post('/', isAdmin, validarInputsProduct, async (req, res) => {
     //let respuesta = await productContainer.addProduct(prod);    
     //return res.status(200).send(respuesta); 
 
-    // Con MongoDB
-    let result = await ProductModel.create(req.body);
-    return res.status(200).send({status: 'OK', result});
+    // Con MongoDB    
+    let result = await ProductControllerMONGO.createProduct(req.body);
+    return res.status(200).send(result);
 
   } catch (error) {
     return res.status(404).send({status:'ERROR', result: error.message}); 
@@ -81,11 +79,10 @@ router.put('/:id', isAdmin, validarInputsProduct, async (req, res) => {
     //if(respuesta.status === 'ERROR') return res.status(400).send(respuesta);    
     //return res.status(200).send(respuesta);    
 
-    // Con MongoDB
-    let result = await ProductModel.findByIdAndUpdate(id, req.body, {new:true})
-    if(!result) return res.status(404).send({status: 'ERROR', result: `No existe producto ID: ${id}`});
+    // Con MongoDB    
+    let result = await ProductControllerMONGO.editProduct(id, req.body)
+    return res.status(200).send(result);        
 
-    return res.status(200).send({status: 'OK', result});        
   } catch (error) {
     res.status(404).send({status:'ERROR', result: error.message}); 
   }
@@ -100,10 +97,8 @@ router.delete('/:id', isAdmin, async (req, res) => {
     //return res.status(200).send(respuesta); 
 
     // Con MongoDB
-    let result = await ProductModel.findByIdAndDelete(id);
-    if(!result) return res.status(404).send({status: 'ERROR', result: `No existe producto ID: ${id}`});
-
-    return res.status(200).send({status: 'OK', result});        
+    let result = await ProductControllerMONGO.deleteProduct(id);
+    return res.status(200).send(result);        
 
   } catch (error) {
     res.status(404).send({status:'ERROR', result: error.message}); 
