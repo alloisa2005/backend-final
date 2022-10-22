@@ -1,4 +1,6 @@
 
+require('dotenv').config();
+
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -17,7 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
 //// Conexión MongoDB
-const uri = 'mongodb+srv://user_db:l6LQO08NAya9flsk@clusteranthony.rf4uk66.mongodb.net/ecommerce?retryWrites=true&w=majority';
+const uri = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASS}@clusteranthony.rf4uk66.mongodb.net/${process.env.MONGODB_DB}?retryWrites=true&w=majority`;
 mongoose.connect(uri)
   .then( () => console.log('BD Conectada'))
   .catch( err => console.log(err))
