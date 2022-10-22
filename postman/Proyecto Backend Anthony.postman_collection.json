@@ -37,7 +37,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/productos/63528f407d2062a358c86de7",
+							"raw": "http://localhost:8080/api/productos/8sfeXVGNx454r1HpINId",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -46,7 +46,7 @@
 							"path": [
 								"api",
 								"productos",
-								"63528f407d2062a358c86de7"
+								"8sfeXVGNx454r1HpINId"
 							]
 						}
 					},
@@ -59,7 +59,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nombre\": \"Cerveza Quilmes\",\r\n  \"descripcion\":\"Lata 473cc\",\r\n  \"codigo\":\"BE87005\",\r\n  \"foto\":\"http:foto.com\",\r\n  \"precio\": 200,\r\n  \"stock\": 123\r\n}",
+							"raw": "{\r\n  \"nombre\": \"Fernet Fernando\",\r\n  \"descripcion\":\"Fernet Medio Pelo\",\r\n  \"codigo\":\"BE44765\",\r\n  \"foto\":\"http:foto.com\",\r\n  \"precio\": 380,\r\n  \"stock\": 41\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -89,7 +89,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"precio\": 740,\r\n  \"stock\": 100\r\n}",
+							"raw": "{\r\n  \"precio\": 740,\r\n  \"stock\": 101\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -97,7 +97,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/productos/63528f407d2062a358c86de7",
+							"raw": "http://localhost:8080/api/productos/SebBhst6BwIp7gTcmZ8q",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -106,7 +106,7 @@
 							"path": [
 								"api",
 								"productos",
-								"63528f407d2062a358c86de7"
+								"SebBhst6BwIp7gTcmZ8q"
 							]
 						}
 					},
@@ -118,7 +118,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/productos/63528f407d2062a358c86de7",
+							"raw": "http://localhost:8080/api/productos/di2auxC7IkksFAjkxXRj",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -127,7 +127,7 @@
 							"path": [
 								"api",
 								"productos",
-								"63528f407d2062a358c86de7"
+								"di2auxC7IkksFAjkxXRj"
 							]
 						}
 					},
@@ -165,7 +165,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/carrito/635292f44af4eba03cc65860",
+							"raw": "http://localhost:8080/api/carrito/BtzoWAccNh1x6UplWLvr",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -174,7 +174,7 @@
 							"path": [
 								"api",
 								"carrito",
-								"635292f44af4eba03cc65860"
+								"BtzoWAccNh1x6UplWLvr"
 							]
 						}
 					},
@@ -187,7 +187,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"producto\":\r\n    {\r\n      \"product_id\": \"63503cc2e87861f2f937f6b7\",\r\n      \"quantity\": 2,\r\n      \"price\": 6800\r\n    }\r\n}",
+							"raw": "{\r\n  \"producto\":\r\n    {\r\n      \"product_id\": \"wGb6qRQ7BtL3hfJQZB7L\",\r\n      \"quantity\": 2,\r\n      \"price\": 380\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -217,7 +217,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"producto\": \r\n    {\r\n      \"product_id\": \"63503cc2e87861f2f937f6b7\",\r\n      \"quantity\": 1,\r\n      \"price\": 6800\r\n    }\r\n}",
+							"raw": "{\r\n  \"producto\": \r\n    {\r\n      \"product_id\": \"ZHnOMw2DZOzZdTbNZLfR\",\r\n      \"quantity\": 1,\r\n      \"price\": 240\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -225,7 +225,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/carrito/63529405034b3675921b4e14/productos",
+							"raw": "http://localhost:8080/api/carrito/Q3z3iXZQAmtMgZ7GWEjE/productos",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -234,7 +234,7 @@
 							"path": [
 								"api",
 								"carrito",
-								"63529405034b3675921b4e14",
+								"Q3z3iXZQAmtMgZ7GWEjE",
 								"productos"
 							]
 						}
@@ -247,7 +247,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/carrito/635297e373875e6411087655/productos",
+							"raw": "http://localhost:8080/api/carrito/EG8oPjBJnxOujSKow2uJ/productos",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -256,7 +256,7 @@
 							"path": [
 								"api",
 								"carrito",
-								"635297e373875e6411087655",
+								"EG8oPjBJnxOujSKow2uJ",
 								"productos"
 							]
 						}
@@ -269,7 +269,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/carrito/63529405034b3675921b4e14/productos/63503cc2e87861f2f937f6b7",
+							"raw": "http://localhost:8080/api/carrito/Q3z3iXZQAmtMgZ7GWEjE/productos/ZHnOMw2DZOzZdTbNZLfR",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -278,9 +278,9 @@
 							"path": [
 								"api",
 								"carrito",
-								"63529405034b3675921b4e14",
+								"Q3z3iXZQAmtMgZ7GWEjE",
 								"productos",
-								"63503cc2e87861f2f937f6b7"
+								"ZHnOMw2DZOzZdTbNZLfR"
 							]
 						}
 					},
