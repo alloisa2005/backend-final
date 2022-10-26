@@ -30,7 +30,7 @@ router.get('/', async (req, res) => {
     //return res.status(200).send(result);      
 
     //Con FIRESTORE
-    let result = await ProductControllerFIRESTORE.getAll();    
+    let result = await ProductControllerFIRESTORE.getAll();        
     return res.status(200).send(result);  
 
   } catch (error) {
