@@ -19,6 +19,45 @@ const isAdmin = (req,res,next) => {
   admin ? next() : res.status(401).send({ status:'ERROR', result: `Usuario no autorizado para ${req.method}`});
 } 
 
+/**
+ * @swagger
+ * components:
+ *  schemas:
+ *    Product:
+ *      type: object
+ *      properties:
+ *        nombre: 
+ *          type: string
+ *          description: Nombre del producto
+ *        descripcion: 
+ *          type: string
+ *          description: Descripción del producto
+ *        codigo: 
+ *          type: string
+ *          description: Código del producto
+ *        foto: 
+ *          type: string
+ *          description: Foto (url) del producto
+ *        precio: 
+ *          type: number
+ *          description: Precio del producto
+ *        stock: 
+ *          type: integer
+ *          description: Stock del producto
+ *      required:
+ *        - nombre
+ *        - descripcion
+ *        - codigo
+ *        - precio
+ *        - stock
+ *      example:
+ *        nombre: Consola
+ *        descripcion: Sony PS5
+ *        codigo: AJJ45645
+ *        precio: 5800.50
+ *        stock: 5
+ */
+
 router.get('/', async (req, res) => {
   try {
     // Con Archivos
@@ -26,12 +65,12 @@ router.get('/', async (req, res) => {
     //return res.status(200).send(respuesta); 
 
     // Con MongoDB    
-    //let result = await ProductControllerMONGO.getAll()
-    //return res.status(200).send(result);      
+    let result = await ProductControllerMONGO.getAll()
+    return res.status(200).send(result);      
 
     //Con FIRESTORE
-    let result = await ProductControllerFIRESTORE.getAll();        
-    return res.status(200).send(result);  
+    //let result = await ProductControllerFIRESTORE.getAll();        
+    //return res.status(200).send(result);  
 
   } catch (error) {
     res.status(404).send({status:'ERROR', result: error.message}); 
@@ -46,12 +85,12 @@ router.get('/:id', async (req, res) => {
     //return res.status(200).send(respuesta); 
 
     // Con MongoDB    
-    //let result = await ProductControllerMONGO.getById(id);
-    //return res.status(200).send(result);
+    let result = await ProductControllerMONGO.getById(id);
+    return res.status(200).send(result);
 
     //Con FIRESTORE
-    let result = await ProductControllerFIRESTORE.getById(id);
-    return res.status(200).send(result);
+    //let result = await ProductControllerFIRESTORE.getById(id);
+    //return res.status(200).send(result);
 
   } catch (error) {
     res.status(404).send({status:'ERROR', result: error.message}); 
@@ -68,12 +107,12 @@ router.post('/', isAdmin, validarInputsProduct, async (req, res) => {
     //return res.status(200).send(respuesta); 
 
     // Con MongoDB    
-    //let result = await ProductControllerMONGO.createProduct(req.body);
-    //return res.status(200).send(result);
+    let result = await ProductControllerMONGO.createProduct(req.body);
+    return res.status(200).send(result);
 
     //Con FIRESTORE
-    let result = await ProductControllerFIRESTORE.createProduct(req.body)
-    return res.status(200).send(result);
+    //let result = await ProductControllerFIRESTORE.createProduct(req.body)
+    //return res.status(200).send(result);
 
   } catch (error) {
     return res.status(404).send({status:'ERROR', result: error.message}); 
@@ -93,12 +132,12 @@ router.put('/:id', isAdmin, validarInputsProduct, async (req, res) => {
     //return res.status(200).send(respuesta);    
 
     // Con MongoDB    
-    //let result = await ProductControllerMONGO.editProduct(id, req.body)
-    //return res.status(200).send(result); 
+    let result = await ProductControllerMONGO.editProduct(id, req.body)
+    return res.status(200).send(result); 
     
     //Con FIRESTORE
-    let result = await ProductControllerFIRESTORE.editProduct(id, req.body)
-    return res.status(200).send(result);   
+    //let result = await ProductControllerFIRESTORE.editProduct(id, req.body)
+    //return res.status(200).send(result);   
 
   } catch (error) {
     res.status(404).send({status:'ERROR', result: error.message}); 
@@ -114,12 +153,12 @@ router.delete('/:id', isAdmin, async (req, res) => {
     //return res.status(200).send(respuesta); 
 
     // Con MongoDB
-    //let result = await ProductControllerMONGO.deleteProduct(id);
-    //return res.status(200).send(result);        
+    let result = await ProductControllerMONGO.deleteProduct(id);
+    return res.status(200).send(result);        
 
     //Con FIRESTORE
-    let result = await ProductControllerFIRESTORE.deleteProduct(id);
-    return res.status(200).send(result); 
+    //let result = await ProductControllerFIRESTORE.deleteProduct(id);
+    //return res.status(200).send(result); 
 
   } catch (error) {
     res.status(404).send({status:'ERROR', result: error.message}); 
