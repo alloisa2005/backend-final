@@ -19,6 +19,7 @@ const validarInputsProduct = (req,res,next) => {
   next();
 }
 
+
 router.get('/', async (req, res) => {
   try {
       // Con MongoDB

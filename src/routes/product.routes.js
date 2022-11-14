@@ -54,10 +54,27 @@ const isAdmin = (req,res,next) => {
  *        nombre: Consola
  *        descripcion: Sony PS5
  *        codigo: AJJ45645
+ *        foto : 'http://www.foto.com/foto.jpg'
  *        precio: 5800.50
  *        stock: 5
  */
 
+/**
+ * @swagger
+ * /api/productos:
+ *  get:
+ *    summary: Devuelve todos los productos
+ *    tags: [Product]
+ *    responses:
+ *      200: 
+ *        description: todos los productos
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: array
+ *              items:
+ *                $ref: '#/components/schemas/Product'
+ */
 router.get('/', async (req, res) => {
   try {
     // Con Archivos
@@ -77,6 +94,28 @@ router.get('/', async (req, res) => {
   }  
 });
 
+/**
+ * @swagger
+ * /api/productos/{id}:
+ *  get:
+ *    summary: Devuelve un producto por ID
+ *    tags: [Product]
+ *    parameters:
+ *      - in: path
+ *        name: id
+ *        schema:
+ *          type: string
+ *        required: true
+ *        description: ID del producto
+ *    responses:
+ *      200: 
+ *        description: todos los productos
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              $ref: '#/components/schemas/Product' 
+ */
 router.get('/:id', async (req, res) => {  
   let { id } = req.params;
   try {    
@@ -97,6 +136,23 @@ router.get('/:id', async (req, res) => {
   }  
 });
 
+/**
+ * @swagger
+ * /api/productos:
+ *  post:
+ *    summary: Crea un nuevo producto
+ *    tags: [Product]
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            type: object
+ *            $ref: '#/components/schemas/Product'
+ *    responses:
+ *      200: 
+ *        description: nuevo producto fue creado
+ */
 router.post('/', isAdmin, validarInputsProduct, async (req, res) => {
 
   try {    
@@ -120,6 +176,35 @@ router.post('/', isAdmin, validarInputsProduct, async (req, res) => {
 
 });
 
+/**
+ * @swagger
+ * /api/productos/{id}:
+ *  put:
+ *    summary: Actualiza un producto por ID
+ *    tags: [Product]
+ *    parameters:
+ *      - in: path
+ *        name: id
+ *        schema:
+ *          type: string
+ *        required: true
+ *        description: ID del producto 
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            type: object
+ *            $ref: '#/components/schemas/Product'
+ *    responses:
+ *      200: 
+ *        description: Producto actualizado
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              $ref: '#/components/schemas/Product' 
+ */
 router.put('/:id', isAdmin, validarInputsProduct, async (req, res) => {
   let { id } = req.params;            
   try {
@@ -144,6 +229,28 @@ router.put('/:id', isAdmin, validarInputsProduct, async (req, res) => {
   }
 })
 
+/**
+ * @swagger
+ * /api/productos/{id}:
+ *  delete:
+ *    summary: Elimina un producto por ID
+ *    tags: [Product]
+ *    parameters:
+ *      - in: path
+ *        name: id
+ *        schema:
+ *          type: string
+ *        required: true
+ *        description: ID del producto
+ *    responses:
+ *      200: 
+ *        description: Producto eliminado
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              $ref: '#/components/schemas/Product' 
+ */
 router.delete('/:id', isAdmin, async (req, res) => {
   let { id } = req.params;            
 
