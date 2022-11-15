@@ -19,7 +19,56 @@ const validarInputsProduct = (req,res,next) => {
   next();
 }
 
+/**
+ * @swagger
+ * components:
+ *  schemas:
+ *    Cart:
+ *      type: object
+ *      properties:
+ *         id:
+ *          type: string
+ *         productos: 
+ *          type: array
+ *          items:
+ *            type: object
+ *            properties:
+ *              product_id: 
+ *                type: string
+ *              quantity: 
+ *                type: integer
+ *              price: 
+ *                type: number
+ *              nombre:
+ *                type: string
+ *              descripcion: 
+ *                type: string
+ *              codigo: 
+ *                type: string
+ *              foto: 
+ *                type: string
+ *              stock: 
+ *                type: integer
+ *         subTotal:
+ *          type: number
+ */
 
+/**
+ * @swagger
+ * /api/carrito:
+ *  get:
+ *    summary: Devuelve todos los carritos
+ *    tags: [Carts]
+ *    responses:
+ *      200: 
+ *        description: todos los carritos
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: array
+ *              items:
+ *                $ref: '#/components/schemas/Cart'
+ */
 router.get('/', async (req, res) => {
   try {
     // Con MongoDB
@@ -35,6 +84,39 @@ router.get('/', async (req, res) => {
   }  
 })
 
+/**
+ * @swagger
+ * /api/carrito/{id}/productos:
+ *  get:
+ *    summary: Devuelve los productos de un carrito
+ *    tags: [Carts]
+ *    parameters:
+ *      - in: path
+ *        name: id
+ *        schema:
+ *          type: string
+ *        required: true
+ *        description: ID del carrito
+ *    responses:
+ *      200: 
+ *        description: todos los productos del carrito
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              $ref: '#/components/schemas/Product' 
+ *      400:
+ *        description: No existe carrito ID
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                status:
+ *                  type: string
+ *                result:
+ *                  rtype: string
+ */
 router.get('/:id/productos', async (req, res) => {
 
   let { id } = req.params;
