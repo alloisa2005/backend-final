@@ -64,7 +64,7 @@ const isAdmin = (req,res,next) => {
  * /api/productos:
  *  get:
  *    summary: Devuelve todos los productos
- *    tags: [Product]
+ *    tags: [Products]
  *    responses:
  *      200: 
  *        description: todos los productos
@@ -99,7 +99,7 @@ router.get('/', async (req, res) => {
  * /api/productos/{id}:
  *  get:
  *    summary: Devuelve un producto por ID
- *    tags: [Product]
+ *    tags: [Products]
  *    parameters:
  *      - in: path
  *        name: id
@@ -141,7 +141,7 @@ router.get('/:id', async (req, res) => {
  * /api/productos:
  *  post:
  *    summary: Crea un nuevo producto
- *    tags: [Product]
+ *    tags: [Products]
  *    requestBody:
  *      required: true
  *      content:
@@ -181,7 +181,7 @@ router.post('/', isAdmin, validarInputsProduct, async (req, res) => {
  * /api/productos/{id}:
  *  put:
  *    summary: Actualiza un producto por ID
- *    tags: [Product]
+ *    tags: [Products]
  *    parameters:
  *      - in: path
  *        name: id
@@ -229,12 +229,12 @@ router.put('/:id', isAdmin, validarInputsProduct, async (req, res) => {
   }
 })
 
-/**
+/**n
  * @swagger
  * /api/productos/{id}:
  *  delete:
  *    summary: Elimina un producto por ID
- *    tags: [Product]
+ *    tags: [Products]
  *    parameters:
  *      - in: path
  *        name: id
