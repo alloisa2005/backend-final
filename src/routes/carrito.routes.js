@@ -138,6 +138,42 @@ router.get('/:id/productos', async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /api/carrito:
+ *  post:
+ *    summary: Crea un nuevo carrito
+ *    tags: [Carts]
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            type: object
+ *            properties:
+ *              producto: 
+ *                type: object
+ *                properties:
+ *                  product_id: 
+ *                    type: string
+ *                  quantity: 
+ *                    type: integer
+ *                  price: 
+ *                    type: number
+ *                  nombre:
+ *                    type: string
+ *                  descripcion: 
+ *                    type: string
+ *                  codigo: 
+ *                    type: string
+ *                  foto: 
+ *                    type: string
+ *                  stock: 
+ *                    type: integer
+ *    responses:
+ *      200: 
+ *        description: nuevo carrito fue creado
+ */
 router.post('/',  async (req, res) => {
   let { producto } = req.body;  
   try {    
@@ -147,13 +183,13 @@ router.post('/',  async (req, res) => {
     //let respuesta = await cartContainer.addCart(carrito);
     //res.send(respuesta);
 
-    // Con MongoDB    
-    let result = await CartControllerMONGO.createCart(producto);
-    return res.status(200).send(result);
-
     // Con FIRESTORE
     //let result = await CartControllerFIRESTORE.createCart(producto);
     //return res.status(200).send(result);
+
+    // Con MongoDB    
+    let result = await CartControllerMONGO.createCart(producto);
+    return res.status(200).send(result);
     
   } catch (error) {
     return res.status(404).send({status:'ERROR', result: error.message}); 
