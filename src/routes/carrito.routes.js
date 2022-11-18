@@ -197,6 +197,43 @@ router.post('/',  async (req, res) => {
 
 });
 
+/**
+ * @swagger
+ * /api/carrito/{id}:
+ *  delete:
+ *    summary: Elimina un carrito por ID
+ *    tags: [Carts]
+ *    parameters:
+ *      - in: path
+ *        name: id
+ *        schema:
+ *          type: string
+ *        required: true
+ *        description: ID del carrito
+ *    responses:
+ *      200: 
+ *        description: todos los productos del carrito
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                status: 
+ *                  type: string
+ *                result:
+ *                  type: string
+ *      400:
+ *        description: No existe carrito
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                status:
+ *                  type: string
+ *                result:
+ *                  rtype: string
+ */
 router.delete('/:id', async (req, res) => {
 
   let { id } = req.params;  
@@ -217,6 +254,7 @@ router.delete('/:id', async (req, res) => {
     return res.status(404).send({status:'ERROR', result: error.message});
   }
 });
+
 
 router.post('/:id/productos', async (req, res) => {
 

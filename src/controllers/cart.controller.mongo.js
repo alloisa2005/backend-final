@@ -35,7 +35,7 @@ class CartController {
   async delete(id_cart) {
     try {      
       let result = await CartModel.findByIdAndDelete(id_cart)
-      return {status:'OK', result}; 
+      return {status:'OK', result: `Carrito ID: ${id_cart} eliminado`}; 
     } catch (error) {
       return {status:'ERROR', result: error.message};
     }
