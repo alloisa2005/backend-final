@@ -255,7 +255,49 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
-
+/**
+ * @swagger
+ * /api/carrito/{id}/productos:
+ *  post:
+ *    summary: Agrega un producto a un carrito
+ *    tags: [Carts]
+ *    parameters:
+ *      - in: path
+ *        name: id
+ *        schema:
+ *          type: string
+ *        required: true
+ *        description: ID del carrito
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            type: object
+ *            properties:
+ *              producto: 
+ *                type: object
+ *                properties:
+ *                  product_id: 
+ *                    type: string
+ *                  quantity: 
+ *                    type: integer
+ *                  price: 
+ *                    type: number
+ *                  nombre:
+ *                    type: string
+ *                  descripcion: 
+ *                    type: string
+ *                  codigo: 
+ *                    type: string
+ *                  foto: 
+ *                    type: string
+ *                  stock: 
+ *                    type: integer
+ *    responses:
+ *      200: 
+ *        description: Producto agregado al carrito
+ */
 router.post('/:id/productos', async (req, res) => {
 
   let { id } = req.params;
