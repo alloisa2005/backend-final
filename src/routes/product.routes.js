@@ -26,6 +26,9 @@ const isAdmin = (req,res,next) => {
  *    Product:
  *      type: object
  *      properties:
+ *        _id: 
+ *          type: string
+ *          description: ID del producto
  *        nombre: 
  *          type: string
  *          description: Nombre del producto
@@ -71,9 +74,14 @@ const isAdmin = (req,res,next) => {
  *        content:
  *          application/json:
  *            schema:
- *              type: array
- *              items:
- *                $ref: '#/components/schemas/Product'
+ *              type: object
+ *              properties:
+ *                status: 
+ *                  type: string
+ *                result:
+ *                  type: array
+ *                  items:
+ *                    $ref: '#/components/schemas/Product'
  */
 router.get('/', async (req, res) => {
   try {

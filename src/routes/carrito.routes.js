@@ -115,7 +115,7 @@ router.get('/', async (req, res) => {
  *                status:
  *                  type: string
  *                result:
- *                  rtype: string
+ *                  type: string
  */
 router.get('/:id/productos', async (req, res) => {
 
