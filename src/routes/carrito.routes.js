@@ -3,9 +3,6 @@ const { Router } = require('express');
 const router = Router();
 
 const CartControllerMONGO = require('../controllers/cart.controller.mongo')
-const CartControllerFIRESTORE = require('../controllers/cart.controller.firestore')
-
-//let cartContainer = new Cart('./src/data/carritos.txt');
 
 // Middleware para validar lo que viene en el body como dato de entrada
 const validarInputsProduct = (req,res,next) => {
