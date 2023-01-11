@@ -21,7 +21,7 @@ router.post('/register', async (req, res) => {
 
   try {        
     let result = await UserController.register(email, password, nombre, direccion, edad, telefono, foto);
-    return res.status(200).send(result);          
+    return res.status(200).send(result);            
 
   } catch (error) {
     res.status(404).send({status:'ERROR', result: error.message}); 
@@ -31,7 +31,7 @@ router.post('/register', async (req, res) => {
 router.post('/login', async (req, res) => {
   let {email, password} = req.body;
   try {    
-    
+
     let result = await UserController.login(email, password)
     return res.status(200).send(result);          
 

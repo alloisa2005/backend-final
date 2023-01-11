@@ -55,7 +55,7 @@ class UserController {
       if(!passCoincide) return {status: 'error', msg: 'Contraseña incorrecta'}
 
       // Guardo la info del user
-      req.session.user = user;
+      //req.session.user = user;
       return {status: 'ok', msg: ''}
 
     } catch (error) {
