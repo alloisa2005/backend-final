@@ -11,6 +11,7 @@ const path = require('path');
 
 const routerProductos = require('./routes/product.routes')
 const routerCarrito = require('./routes/carrito.routes')
+const routerLogin = require('./routes/login.routes')
 
 const app = express();
 
@@ -43,6 +44,7 @@ mongoose.connect(uri)
 
 app.use('/api/productos', routerProductos);
 app.use('/api/carrito', routerCarrito);
+app.use('/api/login', routerLogin);  
 
 // Ruta para documentación SWAGGER
 app.use('/api-doc', swaggerUI.serve, swaggerUI.setup(swaggerJsDoc(optionsSwagger)))
