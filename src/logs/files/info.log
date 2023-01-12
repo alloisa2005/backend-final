@@ -1,0 +1,4 @@
+[2023-01-12T14:14:21.607] [INFO] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: cc11@gmail.com
+[2023-01-12T14:14:32.939] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - User: Juan Perez
+[2023-01-12T14:15:31.906] [INFO] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: cc11@gmail.com
+[2023-01-12T14:15:35.255] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: cc11@gmail.com - User: Juan Perez

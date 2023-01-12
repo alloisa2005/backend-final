@@ -12,11 +12,6 @@ const { validarInputsProduct, isLogged } = require('../middlewares/validaciones'
 
 let admin = true;
 
-// Middleware para validar si es Admin el usuario 
-const isAdmin = (req,res,next) => {
-  admin ? next() : res.status(401).send({ status:'ERROR', result: `Usuario no autorizado para ${req.method}`}); 
-} 
-
 /**
  * @swagger
  * components:
@@ -84,7 +79,7 @@ const isAdmin = (req,res,next) => {
 router.get('/', isLogged, async (req, res) => {
   try {    
 
-    logger_info.info(`Ruta ${req.method} - "${req.hostname}:${req.socket.localPort}${req.baseUrl}" accedida - User: ${req.session.user.nombre}`);  
+    logger_info.info(`Ruta ${req.method} - "${req.hostname}:${req.socket.localPort}${req.baseUrl}" accedida - Email: ${req.session.user.email} - User: ${req.session.user.nombre}`);  
 
     let result = await ProductControllerMONGO.getAll()
     return res.status(200).send(result);          
@@ -116,7 +111,7 @@ router.get('/', isLogged, async (req, res) => {
  *              type: object
  *              $ref: '#/components/schemas/Product' 
  */
-router.get('/:id', async (req, res) => {  
+router.get('/:id', isLogged, async (req, res) => {  
   let { id } = req.params;
   try {    
       
@@ -145,7 +140,7 @@ router.get('/:id', async (req, res) => {
  *      200: 
  *        description: nuevo producto fue creado
  */
-router.post('/', isAdmin, validarInputsProduct, async (req, res) => {
+router.post('/', isLogged, validarInputsProduct, async (req, res) => {
 
   try {    
       
@@ -187,7 +182,7 @@ router.post('/', isAdmin, validarInputsProduct, async (req, res) => {
  *              type: object
  *              $ref: '#/components/schemas/Product' 
  */
-router.put('/:id', isAdmin, validarInputsProduct, async (req, res) => {
+router.put('/:id', isLogged, validarInputsProduct, async (req, res) => {
   let { id } = req.params;            
   try {
        
@@ -221,7 +216,7 @@ router.put('/:id', isAdmin, validarInputsProduct, async (req, res) => {
  *              type: object
  *              $ref: '#/components/schemas/Product' 
  */
-router.delete('/:id', isAdmin, async (req, res) => {
+router.delete('/:id', isLogged, async (req, res) => {
   let { id } = req.params;            
 
   try {
