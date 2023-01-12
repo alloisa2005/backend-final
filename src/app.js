@@ -3,6 +3,8 @@ require('dotenv').config();
 
 const express = require('express');
 const cors = require('cors');
+const session = require('express-session')
+
 const mongoose = require('mongoose');
 const swaggerUI = require('swagger-ui-express');
 const swaggerJsDoc = require('swagger-jsdoc')
@@ -33,7 +35,14 @@ const optionsSwagger = {
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-
+app.use(session({    
+  key: 'user_id',
+  secret: 'mi palabra secreta',
+  resave: false,
+  saveUninitialized: false,  
+  /* store: store, */
+  cookie: { maxAge: 60000 }
+}))
 
 //// Conexión MongoDB
 const uri = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASS}@clusteranthony.rf4uk66.mongodb.net/${process.env.MONGODB_DB}?retryWrites=true&w=majority`;

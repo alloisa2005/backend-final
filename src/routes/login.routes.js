@@ -6,8 +6,8 @@ const UserController = require('../controllers/user.controller.mongo')
 
 
 router.get('/', async (req, res) => {
-  try {    
-    
+  try {        
+
     let result = await UserController.getAll()
     return res.status(200).send(result);          
 
@@ -32,12 +32,21 @@ router.post('/login', async (req, res) => {
   let {email, password} = req.body;
   try {    
 
-    let result = await UserController.login(email, password)
-    return res.status(200).send(result);          
+    let result = await UserController.login(email, password)    
+    
+    req.session.user = result.user;
 
+    return res.status(200).send(result);          
   } catch (error) {
     return res.status(400).send({status: 'error', msg: error.message})
   }
+})
+
+router.post('/logout', (req, res) => {
+  req.session.destroy( (err) => {
+    if(err) throw err;
+    return res.status(200).send({status: 'ok', msg: 'Usuario deslogueado'})
+  })
 })
 
 module.exports = router;

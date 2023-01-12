@@ -5,7 +5,7 @@ const router = Router();
 const ProductControllerMONGO = require('../controllers/product.controller.mongo')
 
 // Middlewares
-const { validarInputsProduct } = require('../middlewares/validaciones')
+const { validarInputsProduct, isLogged } = require('../middlewares/validaciones')
 
 let admin = true;
 
@@ -78,9 +78,9 @@ const isAdmin = (req,res,next) => {
  *                  items:
  *                    $ref: '#/components/schemas/Product'
  */
-router.get('/', async (req, res) => {
+router.get('/', isLogged, async (req, res) => {
   try {    
-    
+
     let result = await ProductControllerMONGO.getAll()
     return res.status(200).send(result);          
 

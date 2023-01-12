@@ -13,5 +13,12 @@ const validarInputsProduct = (req,res,next) => {
   next();
 }
 
+const isLogged = (req, res, next) => {
+  if(req.session.user){
+    next();
+  }else{
+    return res.status(404).send({status: 'ERROR',result: 'Usuario no logged'});
+  }
+}
 
-module.exports = { validarInputsProduct }
+module.exports = { validarInputsProduct, isLogged };

@@ -56,7 +56,14 @@ class UserController {
 
       // Guardo la info del user
       //req.session.user = user;
-      return {status: 'ok', msg: ''}
+      let user_msg = {
+        email: user.email,
+        nombre: user.direccion,
+        direccion: user.direccion,
+        telefono: user.telefono,
+        foto: user.foto
+      }
+      return {status: 'ok', msg: '', user: user_msg}
 
     } catch (error) {
       return {status:'ERROR', result: error.message};             
