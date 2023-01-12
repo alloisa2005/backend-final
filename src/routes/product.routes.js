@@ -4,6 +4,9 @@ const router = Router();
 
 const ProductControllerMONGO = require('../controllers/product.controller.mongo')
 
+////////////////  LOGGER///////////////
+const { logger_info, logger_warn, logger_error } = require('../logs/log_config');
+
 // Middlewares
 const { validarInputsProduct, isLogged } = require('../middlewares/validaciones')
 
@@ -11,7 +14,7 @@ let admin = true;
 
 // Middleware para validar si es Admin el usuario 
 const isAdmin = (req,res,next) => {
-  admin ? next() : res.status(401).send({ status:'ERROR', result: `Usuario no autorizado para ${req.method}`});
+  admin ? next() : res.status(401).send({ status:'ERROR', result: `Usuario no autorizado para ${req.method}`}); 
 } 
 
 /**
@@ -80,6 +83,8 @@ const isAdmin = (req,res,next) => {
  */
 router.get('/', isLogged, async (req, res) => {
   try {    
+
+    logger_info.info(`Ruta ${req.method} - "${req.hostname}:${req.socket.localPort}${req.baseUrl}" accedida - User: ${req.session.user.nombre}`);  
 
     let result = await ProductControllerMONGO.getAll()
     return res.status(200).send(result);          

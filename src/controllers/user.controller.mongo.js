@@ -58,9 +58,9 @@ class UserController {
       //req.session.user = user;
       let user_msg = {
         email: user.email,
-        nombre: user.direccion,
+        nombre: user.nombre,
         direccion: user.direccion,
-        telefono: user.telefono,
+        telefono: user.telefono, 
         foto: user.foto
       }
       return {status: 'ok', msg: '', user: user_msg}
