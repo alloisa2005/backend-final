@@ -8,7 +8,7 @@ const ProductControllerMONGO = require('../controllers/product.controller.mongo'
 const { logger_info, logger_warn, logger_error } = require('../logs/log_config');
 
 // Middlewares
-const { validarInputsProduct, isLogged } = require('../middlewares/validaciones')
+const { validarInputsProduct, isLogged, isAdmin } = require('../middlewares/validaciones')
 
 let admin = true;
 
@@ -140,7 +140,7 @@ router.get('/:id', isLogged, async (req, res) => {
  *      200: 
  *        description: nuevo producto fue creado
  */
-router.post('/', isLogged, validarInputsProduct, async (req, res) => {
+router.post('/', isLogged, validarInputsProduct, isAdmin, async (req, res) => {
 
   try {    
       
@@ -182,7 +182,7 @@ router.post('/', isLogged, validarInputsProduct, async (req, res) => {
  *              type: object
  *              $ref: '#/components/schemas/Product' 
  */
-router.put('/:id', isLogged, validarInputsProduct, async (req, res) => {
+router.put('/:id', isLogged, validarInputsProduct, isAdmin, async (req, res) => {
   let { id } = req.params;            
   try {
        
@@ -216,7 +216,7 @@ router.put('/:id', isLogged, validarInputsProduct, async (req, res) => {
  *              type: object
  *              $ref: '#/components/schemas/Product' 
  */
-router.delete('/:id', isLogged, async (req, res) => {
+router.delete('/:id', isLogged, isAdmin, async (req, res) => {
   let { id } = req.params;            
 
   try {

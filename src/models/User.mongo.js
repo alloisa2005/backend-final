@@ -8,7 +8,8 @@ const userSchema = mongoose.Schema(
     direccion: {type:String, required: true},
     edad: {type:Number, required: true},
     telefono: {type:String, required: true },
-    foto: {type:String}    
+    foto: {type:String},
+    isAdmin: {type:String, default: 'N'}
   },
   {
     timestamps: true,

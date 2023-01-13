@@ -21,4 +21,16 @@ const isLogged = (req, res, next) => {
   }
 }
 
-module.exports = { validarInputsProduct, isLogged };
+const isAdmin = (req, res, next) => {
+  if(req.session.user){
+    if(req.session.user.isAdmin === 'S'){
+      next();
+    }else{
+      return res.status(404).send({status: 'ERROR',result: 'Usuario no autorizado a esta ruta'});
+    }
+  }else{
+    return res.status(404).send({status: 'ERROR',result: 'Usuario no logged'});
+  }
+}
+
+module.exports = { validarInputsProduct, isLogged, isAdmin };

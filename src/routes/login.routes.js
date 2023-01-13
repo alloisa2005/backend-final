@@ -4,24 +4,23 @@ const router = Router();
 
 const UserController = require('../controllers/user.controller.mongo')
 
-const { logger_info, logger_warn, logger_error } = require('../logs/log_config');
+const { logger_info, logger_error } = require('../logs/log_config');
 
-// Middlewares
-const { isLogged } = require('../middlewares/validaciones')
+////////////// Middlewares //////////////
+const { isLogged, isAdmin } = require('../middlewares/validaciones')
 
+router.get('/', isLogged, isAdmin, async (req, res) => {
+  try {
 
-router.get('/', isLogged, async (req, res) => {
-  try {        
-
-    logger_info.warn(`Ruta ${req.method} - "${req.hostname}:${req.socket.localPort}${req.baseUrl}" accedida - Email: ${email} - Nombre: ${email}`);  
+    logger_info.warn(`Ruta ${req.method} - "${req.hostname}:${req.socket.localPort}${req.baseUrl}" accedida - Email: ${req.session.user.email} - Nombre: ${req.session.user.nombre}`);  
 
     let result = await UserController.getAll()
-    return res.status(200).send(result);          
-
+    return res.status(200).send(result); 
+    
   } catch (error) {
     res.status(404).send({status:'ERROR', result: error.message}); 
-  }  
-});
+  }
+})
 
 router.post('/register', async (req, res) => {
   let {email, password, nombre, direccion, edad, telefono, foto} = req.body;
@@ -39,7 +38,7 @@ router.post('/register', async (req, res) => {
 
     res.status(404).send({status:'ERROR', result: error.message}); 
   }  
-});
+}); 
 
 router.post('/login', async (req, res) => {
   let {email, password} = req.body;

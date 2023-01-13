@@ -3,11 +3,11 @@ const UserModel = require('../models/User.mongo')
 
 class UserController {
 
-  async getAll() {
-
+  async getAll() {    
+    
     try {
 
-      let result = await UserModel.find()
+      let result = await UserModel.find()      
       return {status:'OK', result};             
 
     } catch (error) {
@@ -61,7 +61,8 @@ class UserController {
         nombre: user.nombre,
         direccion: user.direccion,
         telefono: user.telefono, 
-        foto: user.foto
+        foto: user.foto,
+        isAdmin: user.isAdmin
       }
       return {status: 'ok', msg: '', user: user_msg}
 

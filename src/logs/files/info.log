@@ -2,3 +2,24 @@
 [2023-01-12T14:14:32.939] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - User: Juan Perez
 [2023-01-12T14:15:31.906] [INFO] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: cc11@gmail.com
 [2023-01-12T14:15:35.255] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: cc11@gmail.com - User: Juan Perez
+[2023-01-13T10:40:29.195] [INFO] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: cc11@gmail.com
+[2023-01-13T10:46:21.551] [INFO] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: cc11@gmail.com
+[2023-01-13T10:48:19.912] [INFO] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: cc11@gmail.com
+[2023-01-13T10:51:23.949] [INFO] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: cc11@gmail.com
+[2023-01-13T10:51:55.211] [WARN] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: tony@gmail.com - Nombre: tony@gmail.com
+[2023-01-13T10:52:16.886] [INFO] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: tony@gmail.com
+[2023-01-13T10:58:42.202] [INFO] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: tony@gmail.com
+[2023-01-13T10:58:44.644] [WARN] INFO - Ruta GET - "localhost:8080/api/login" accedida - Email: tony@gmail.com - Nombre: Juan Perez
+[2023-01-13T11:01:41.932] [INFO] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: tony@gmail.com
+[2023-01-13T11:02:23.188] [INFO] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: tony@gmail.com
+[2023-01-13T11:02:27.593] [WARN] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: tony@gmail.com - Nombre: tony@gmail.com
+[2023-01-13T11:02:35.067] [WARN] INFO - Ruta GET - "localhost:8080/api/login" accedida - Email: tony@gmail.com - Nombre: Juan Perez
+[2023-01-13T11:02:54.867] [WARN] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: pepe@gmail.com - Nombre: pepe@gmail.com
+[2023-01-13T11:03:06.598] [WARN] INFO - Ruta GET - "localhost:8080/api/login" accedida - Email: tony@gmail.com - Nombre: Juan Perez
+[2023-01-13T11:04:19.331] [INFO] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: pepe@gmail.com
+[2023-01-13T11:04:48.505] [INFO] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: pepe@gmail.com
+[2023-01-13T11:06:24.603] [INFO] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: pepe@gmail.com
+[2023-01-13T11:06:38.032] [INFO] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: pepe@gmail.com
+[2023-01-13T11:06:52.073] [INFO] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: tony@gmail.com
+[2023-01-13T11:06:55.024] [WARN] INFO - Ruta GET - "localhost:8080/api/login" accedida - Email: tony@gmail.com - Nombre: Juan Perez
+[2023-01-13T11:11:10.821] [INFO] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: tony@gmail.com

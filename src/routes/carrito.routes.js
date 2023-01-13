@@ -4,17 +4,10 @@ const router = Router();
 
 const CartControllerMONGO = require('../controllers/cart.controller.mongo')
 
-// Middleware para validar lo que viene en el body como dato de entrada
-const validarInputsProduct = (req,res,next) => {
-  let producto = req.body;
-  
-  if(producto.id === 0 || producto.nombre === '' || producto.precio <= 0 || producto.precio === '' || producto.stock <= 0 || producto.stock === '') return res.status(404).send({
-    status: 'ERROR',
-    result: 'Ingrese los datos del producto correctamente'
-  });
-  
-  next();
-}
+////////////// Middlewares //////////////
+const { isLogged, isAdmin, validarInputsProduct } = require('../middlewares/validaciones')
+ 
+
 
 /**
  * @swagger
@@ -66,15 +59,11 @@ const validarInputsProduct = (req,res,next) => {
  *              items:
  *                $ref: '#/components/schemas/Cart'
  */
-router.get('/', async (req, res) => {
+router.get('/', isLogged, isAdmin, async (req, res) => {
   try {
-    // Con MongoDB
+    
     let result = await CartControllerMONGO.getAll()
     return res.status(200).send(result); 
-
-    // Con FIRESTORE    
-    //let result = await CartControllerFIRESTORE.getAll();
-    //return res.status(200).send(result); 
 
   } catch (error) {
     return res.status(404).send({status:'ERROR', result: error.message});
@@ -119,17 +108,10 @@ router.get('/:id/productos', async (req, res) => {
   let { id } = req.params;
 
   try {
-    // Con Archivos
-    //let respuesta = await cartContainer.getById(id);
-    //res.send({status: 'OK', result: respuesta.result});    
-
-    // Con MongoDB
+    
     let result = await CartControllerMONGO.getById(id);    
     return res.status(200).send(result); 
-
-    // Con FIRESTORE    
-    //let result = await CartControllerFIRESTORE.getById(id);
-    //return res.status(200).send(result);
+    
   } catch (error) {
     return res.status(404).send({status:'ERROR', result: error.message});
   }
@@ -171,20 +153,10 @@ router.get('/:id/productos', async (req, res) => {
  *      200: 
  *        description: nuevo carrito fue creado
  */
-router.post('/',  async (req, res) => {
+router.post('/',  isLogged, async (req, res) => {
   let { producto } = req.body;  
   try {    
-    // Con Archivos 
-    //let carrito = req.body;
-    //carrito.timestamp = new Date();  
-    //let respuesta = await cartContainer.addCart(carrito);
-    //res.send(respuesta);
-
-    // Con FIRESTORE
-    //let result = await CartControllerFIRESTORE.createCart(producto);
-    //return res.status(200).send(result);
-
-    // Con MongoDB    
+    
     let result = await CartControllerMONGO.createCart(producto);
     return res.status(200).send(result);
     
@@ -231,7 +203,7 @@ router.post('/',  async (req, res) => {
  *                result:
  *                  rtype: string
  */
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', isLogged, async (req, res) => {
 
   let { id } = req.params;  
   try {
@@ -295,7 +267,7 @@ router.delete('/:id', async (req, res) => {
  *      200: 
  *        description: Producto agregado al carrito
  */
-router.post('/:id/productos', async (req, res) => {
+router.post('/:id/productos', isLogged, async (req, res) => {
 
   let { id } = req.params;
   let { producto } = req.body;
@@ -318,7 +290,7 @@ router.post('/:id/productos', async (req, res) => {
   }
 });
 
-router.delete('/:id_cart/productos/:id_prod', async (req, res) => {
+router.delete('/:id_cart/productos/:id_prod', isLogged, async (req, res) => {
 
   let { id_cart, id_prod } = req.params;
 
