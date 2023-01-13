@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs');
 const UserModel = require('../models/User.mongo')
+const { enviarMail } = require('../utils/enviarMail')
 
 class UserController {
 
@@ -36,6 +37,14 @@ class UserController {
         telefono, 
         foto
       })
+
+      //Envío mail al administrador
+      let mensaje = `<div><h2>Nuevo Usuario Registrado</h2><p>Email: ${email}</p><p>Nombre: ${nombre}</p><p>Dirección: ${direccion}</p><p>Teléfono: ${telefono}</p><p>Edad: ${edad}</p></div>`;
+      enviarMail(process.env.MAIL_NODEMAILER, 'Nuevo Registro', mensaje)
+
+      //Envío mail al usuario que se registró 
+      mensaje = `<div><h2>Bienvenido/a</h2><p>Gracias por registrarte en Ecommerce Back, puedes visitar la tienda cuando gustes.</p><a href="#">www.tienda-back.com</a></div>`;
+      enviarMail(email, `Ecommerce Back, Bienvenido/a ${nombre}`, mensaje)
 
       return {status: 'ok', msg: 'Usuario creado con éxito'}
 

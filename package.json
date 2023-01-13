@@ -27,6 +27,7 @@
     "express-session": "^1.17.3",
     "log4js": "^6.7.1",
     "mongoose": "^6.6.5",
+    "nodemailer": "^6.9.0",
     "swagger-jsdoc": "^6.2.5",
     "swagger-ui-express": "^4.6.0"
   }
