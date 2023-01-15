@@ -27,7 +27,7 @@ class UserController {
       if(user) return {status: 'error', msg: 'Email ya registrado'}
 
       let hashedPassword = await bcrypt.hash(password, 12);
-
+      
       user = await UserModel.create({      
         email,
         password : hashedPassword,

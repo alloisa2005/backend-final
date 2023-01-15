@@ -1,0 +1,3 @@
+[2023-01-15T12:54:47.073] [INFO] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: aallois@accionpoint.com
+[2023-01-15T12:54:58.703] [WARN] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: aallois@accionpoint.com - Nombre: aallois@accionpoint.com
+[2023-01-15T12:55:09.497] [INFO] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: aallois@accionpoint.com
