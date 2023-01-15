@@ -66,10 +66,12 @@ class UserController {
       // Guardo la info del user
       //req.session.user = user;
       let user_msg = {
+        id: user._id,
         email: user.email,
         nombre: user.nombre,
         direccion: user.direccion,
         telefono: user.telefono, 
+        edad: user.edad,
         foto: user.foto,
         isAdmin: user.isAdmin
       }

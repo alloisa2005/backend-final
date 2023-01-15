@@ -1,3 +1,16 @@
 [2023-01-15T12:54:47.073] [INFO] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: aallois@accionpoint.com
 [2023-01-15T12:54:58.703] [WARN] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: aallois@accionpoint.com - Nombre: aallois@accionpoint.com
 [2023-01-15T12:55:09.497] [INFO] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: aallois@accionpoint.com
+[2023-01-15T16:27:20.861] [INFO] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: aallois@accionpoint.com
+[2023-01-15T16:28:08.343] [INFO] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: aallois@accionpoint.com
+[2023-01-15T16:29:09.369] [INFO] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: aallois@accionpoint.com
+[2023-01-15T16:31:37.064] [INFO] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: aallois@accionpoint.com
+[2023-01-15T16:32:31.103] [INFO] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: aallois@accionpoint.com
+[2023-01-15T16:34:37.163] [INFO] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: aallois@accionpoint.com
+[2023-01-15T16:36:42.722] [WARN] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: anthonyallois@gmail.com - Nombre: anthonyallois@gmail.com
+[2023-01-15T16:37:06.241] [INFO] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: anthonyallois@gmail.com
+[2023-01-15T16:37:14.149] [INFO] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: anthonyallois@gmail.com
+[2023-01-15T16:41:59.117] [INFO] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: anthonyallois@gmail.com
+[2023-01-15T16:42:13.813] [INFO] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: anthonyallois@gmail.com
+[2023-01-15T16:42:54.924] [INFO] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: anthonyallois@gmail.com
+[2023-01-15T16:43:24.462] [INFO] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: anthonyallois@gmail.com

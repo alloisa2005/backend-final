@@ -44,13 +44,10 @@ app.use(session({
   cookie: { maxAge: 60000 }
 }))
 
-//// Conexión MongoDB
-const uri = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASS}@clusteranthony.rf4uk66.mongodb.net/${process.env.MONGODB_DB}?retryWrites=true&w=majority`;
-mongoose.connect(uri)
-  .then( () => console.log(`DB: ${process.env.MONGODB_DB} lista para usar`))
-  .catch( err => console.log(err))
+//////// Conexión MongoDB ////////
+require('./database');
 
-
+//////// Rutas ////////
 app.use('/api/productos', routerProductos);
 app.use('/api/carrito', routerCarrito);
 app.use('/api/login', routerLogin);  

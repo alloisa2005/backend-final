@@ -59,10 +59,10 @@ const { isLogged, isAdmin, validarInputsProduct } = require('../middlewares/vali
  *              items:
  *                $ref: '#/components/schemas/Cart'
  */
-router.get('/', isLogged, isAdmin, async (req, res) => {
+router.get('/', isLogged, async (req, res) => {
   try {
     
-    let result = await CartControllerMONGO.getAll()
+    let result = await CartControllerMONGO.getMyCart(req.session.user)
     return res.status(200).send(result); 
 
   } catch (error) {
@@ -154,11 +154,12 @@ router.get('/:id/productos', async (req, res) => {
  *        description: nuevo carrito fue creado
  */
 router.post('/',  isLogged, async (req, res) => {
-  let { producto } = req.body;  
+  let { producto } = req.body; 
+  
   try {    
     
-    let result = await CartControllerMONGO.createCart(producto);
-    return res.status(200).send(result);
+    let result = await CartControllerMONGO.createCart(producto, req.session.user);
+    return res.status(200).send(result); 
     
   } catch (error) {
     return res.status(404).send({status:'ERROR', result: error.message}); 

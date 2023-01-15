@@ -2,9 +2,11 @@ const CartModel = require('../models/Cart.mongo')
 
 class CartController {
 
-  async getAll() {
+  async getMyCart(user) {
     try {      
       let result = await CartModel.find()
+
+      result = result.find(c => c.user.id === user.id);      
       return {status:'OK', result}; 
     } catch (error) {
       return {status:'ERROR', result: error.message};
@@ -22,10 +24,10 @@ class CartController {
     }
   }
 
-  async createCart(prod) {
+  async createCart(prod, user) {
     try {      
       let subTotal = prod.quantity * prod.price;
-      let result = await CartModel.create({productos: prod, subTotal}); 
+      let result = await CartModel.create({user, productos: prod, subTotal}); 
       return {status:'OK', result};
     } catch (error) {
       return {status:'ERROR', result: error.message};
