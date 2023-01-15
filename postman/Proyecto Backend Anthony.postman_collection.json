@@ -37,7 +37,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/productos/8sfeXVGNx454r1HpINId",
+							"raw": "http://localhost:8080/api/productos/vWRvrMXWJRoP2VrrEKCS",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -46,7 +46,7 @@
 							"path": [
 								"api",
 								"productos",
-								"8sfeXVGNx454r1HpINId"
+								"vWRvrMXWJRoP2VrrEKCS"
 							]
 						}
 					},
@@ -59,7 +59,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nombre\": \"Fernet Fernando\",\r\n  \"descripcion\":\"Fernet Medio Pelo\",\r\n  \"codigo\":\"BE44765\",\r\n  \"foto\":\"http:foto.com\",\r\n  \"precio\": 380,\r\n  \"stock\": 41\r\n}",
+							"raw": "{\r\n  \"nombre\": \"Playstation 5\",\r\n  \"descripcion\":\"Consola de SONY\",\r\n  \"codigo\":\"SY48025\",\r\n  \"foto\":\"https://http2.mlstatic.com/D_NQ_NP_841787-MLA44484414455_012021-O.webp\",\r\n  \"precio\": 12000,\r\n  \"stock\": 14\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -89,7 +89,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"precio\": 740,\r\n  \"stock\": 101\r\n}",
+							"raw": "{\r\n  \"nombre:\"\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -97,7 +97,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/productos/SebBhst6BwIp7gTcmZ8q",
+							"raw": "http://localhost:8080/api/productos/iu1C5R55O94Eepg3OtRb",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -106,7 +106,7 @@
 							"path": [
 								"api",
 								"productos",
-								"SebBhst6BwIp7gTcmZ8q"
+								"iu1C5R55O94Eepg3OtRb"
 							]
 						}
 					},
@@ -160,7 +160,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete Carrito",
+					"name": "Delete Carrito (Fin Compra)",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -187,7 +187,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"producto\":\r\n    {\r\n      \"product_id\": \"wGb6qRQ7BtL3hfJQZB7L\",\r\n      \"quantity\": 2,\r\n      \"price\": 380\r\n    }\r\n}",
+							"raw": "{      \r\n    \"producto\":\r\n        {\r\n        \"product_id\": \"wGb6qRQ7BtL3hfJQZB7L\",\r\n        \"quantity\": 1,\r\n        \"price\": 380,\r\n        \"nombre\": \"Producto 1\",\r\n        \"descripcion\":\"Desc del producto 1\",\r\n        \"codigo\":\"AJJ23232\",\r\n        \"foto\":\"http:foto.com\",\r\n        \"stock\": 10\r\n        }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -217,7 +217,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"producto\": \r\n    {\r\n      \"product_id\": \"ZHnOMw2DZOzZdTbNZLfR\",\r\n      \"quantity\": 1,\r\n      \"price\": 240\r\n    }\r\n}",
+							"raw": "{\r\n  \"producto\": \r\n    {\r\n      \"product_id\": \"ZHnOMw2DZOzZdTbNZLfR\",\r\n      \"quantity\": 1,\r\n      \"price\": 240,\r\n      \"nombre\": \"Producto 1\",\r\n      \"descripcion\":\"Desc del producto 1\",\r\n      \"codigo\":\"AJJ23232\",\r\n      \"foto\":\"http:foto.com\",\r\n      \"stock\": 10\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -225,7 +225,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/carrito/Q3z3iXZQAmtMgZ7GWEjE/productos",
+							"raw": "http://localhost:8080/api/carrito/63738b52c374f7b429b91638/productos",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -234,7 +234,7 @@
 							"path": [
 								"api",
 								"carrito",
-								"Q3z3iXZQAmtMgZ7GWEjE",
+								"63738b52c374f7b429b91638",
 								"productos"
 							]
 						}
@@ -247,7 +247,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/carrito/EG8oPjBJnxOujSKow2uJ/productos",
+							"raw": "http://localhost:8080/api/carrito/63738b52c374f7b429b91638/productos",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -256,7 +256,7 @@
 							"path": [
 								"api",
 								"carrito",
-								"EG8oPjBJnxOujSKow2uJ",
+								"63738b52c374f7b429b91638",
 								"productos"
 							]
 						}
@@ -283,6 +283,126 @@
 								"ZHnOMw2DZOzZdTbNZLfR"
 							]
 						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/login/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"login",
+								""
+							]
+						},
+						"description": "Devuelve la lista completa de productos"
+					},
+					"response": []
+				},
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"aallois@accionpoint.com\",\r\n    \"password\":\"111111\",\r\n    \"nombre\":\"Tony\", \r\n    \"direccion\":\"Mi Casa 221\", \r\n    \"edad\":40, \r\n    \"telefono\":\"+59898327640\", \r\n    \"foto\":\"\"    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/login/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"login",
+								"register"
+							]
+						},
+						"description": "Devuelve la lista completa de productos"
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"aallois@accionpoint.com\",\r\n    \"password\":\"111111\"    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/login/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"login",
+								"login"
+							]
+						},
+						"description": "Devuelve la lista completa de productos"
+					},
+					"response": []
+				},
+				{
+					"name": "Logout User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/login/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"login",
+								"logout"
+							]
+						},
+						"description": "Devuelve la lista completa de productos"
 					},
 					"response": []
 				}

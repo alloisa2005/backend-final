@@ -6,7 +6,8 @@ class CartController {
     try {      
       let result = await CartModel.find()
 
-      result = result.find(c => c.user.id === user.id);      
+      result = result.filter(c => c.user.id === user.id);            
+
       return {status:'OK', result}; 
     } catch (error) {
       return {status:'ERROR', result: error.message};

@@ -4,8 +4,10 @@ const router = Router();
 
 const CartControllerMONGO = require('../controllers/cart.controller.mongo')
 
+const { enviarWhats } = require('../utils/enviarWhats');
+
 ////////////// Middlewares //////////////
-const { isLogged, isAdmin, validarInputsProduct } = require('../middlewares/validaciones')
+const { isLogged } = require('../middlewares/validaciones')
  
 
 
@@ -208,17 +210,13 @@ router.delete('/:id', isLogged, async (req, res) => {
 
   let { id } = req.params;  
   try {
-    // Con Archivos
-    //let respuesta = await cartContainer.deleteById(id);
-    //res.send(respuesta);
-
-    // Con MongoDB    
+    
     let result = await CartControllerMONGO.delete(id);
-    return res.status(200).send(result);  
+    enviarWhats('Muchas gracias por su compra. Ha recibido un correo con el detalle de la misma.',req.session.user.telefono);
 
-    // Con FIRESTORE    
-    //let result = await CartControllerFIRESTORE.deleteCart(id)
-    //return res.status(200).send(result);  
+    //No llegué a hacer un msj "lindo" para el correo, lo dejo pendiente para la proxima
+    
+    return res.status(200).send(result);  
 
   } catch (error) {
     return res.status(404).send({status:'ERROR', result: error.message});
@@ -274,17 +272,9 @@ router.post('/:id/productos', isLogged, async (req, res) => {
   let { producto } = req.body;
   
   try {
-    // Con Archivos    
-    //let respuesta = await cartContainer.addProductsToCart(id, productos);
-    //return res.status(200).send(respuesta);
-
-    // Con MongoDB
+    
     let result = await CartControllerMONGO.addProductToCart(id, producto)
     return res.status(200).send(result);
-
-    // Con FIRESTORE    
-    //let result = await CartControllerFIRESTORE.addProductToCart(id, producto);
-    //return res.status(200).send(result);
 
   } catch (error) {
     return res.status(404).send({status:'ERROR', result: error.message}); 
@@ -295,17 +285,10 @@ router.delete('/:id_cart/productos/:id_prod', isLogged, async (req, res) => {
 
   let { id_cart, id_prod } = req.params;
 
-  try {
-    // Con Archivos
-    //let respuesta = await cartContainer.deleteProdFromCart(id, id_prod);    
-
-    // Con MongoDB
+  try {    
+    
     let result = await CartControllerMONGO.deleteProductFromCart(id_cart, id_prod);
     return res.status(200).send(result);
-
-    // Con FIRESTORE    
-    //let result = await CartControllerFIRESTORE.deleteProductFromCart(id_cart, id_prod);
-    //return res.status(200).send(result);
 
   } catch (error) {
     return res.status(404).send({status:'ERROR', result: error.message});
