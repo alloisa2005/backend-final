@@ -8,7 +8,9 @@ const session = require('express-session')
 const mongoose = require('mongoose');
 const swaggerUI = require('swagger-ui-express');
 const swaggerJsDoc = require('swagger-jsdoc')
-
+const cluster = require('cluster');
+const core = require('os');
+const compression = require('compression');
 const path = require('path'); 
 
 const routerProductos = require('./routes/product.routes')
@@ -43,21 +45,31 @@ app.use(session({
   /* store: store, */
   cookie: { maxAge: 60000 }
 }))
+app.use(compression());
 
 //////// Conexión MongoDB ////////
 require('./database');
 
-//////// Rutas ////////
-app.use('/api/productos', routerProductos);
-app.use('/api/carrito', routerCarrito);
-app.use('/api/login', routerLogin);  
+if(cluster.isPrimary) {
+  for (let i = 0; i < core.cpus().length; i++) {
+    cluster.fork()    
+  }
 
-// Ruta para documentación SWAGGER
-app.use('/api-doc', swaggerUI.serve, swaggerUI.setup(swaggerJsDoc(optionsSwagger)))
-
-app.use((req,res) => {
-  res.send({status: 'ERROR', result: `Ruta ${req.url} no implementada`})
-});
-
-
-app.listen(PORT, () => console.log(`Server Up on Port ${PORT} !!`));
+  // reemplazar workers en caso de que mueran
+  cluster.on('exit',() => cluster.fork())
+} else{
+  //////// Rutas ////////
+  app.use('/api/productos', routerProductos);
+  app.use('/api/carrito', routerCarrito);
+  app.use('/api/login', routerLogin);  
+  
+  // Ruta para documentación SWAGGER
+  app.use('/api-doc', swaggerUI.serve, swaggerUI.setup(swaggerJsDoc(optionsSwagger)))
+  
+  app.use((req,res) => {
+    res.send({status: 'ERROR', result: `Ruta ${req.url} no implementada`})
+  });
+  
+  
+  app.listen(PORT, () => console.log(`Server Up on Port ${PORT}!!`));
+}
